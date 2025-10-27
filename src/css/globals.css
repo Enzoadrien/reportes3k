@@ -1,0 +1,40 @@
+:root {
+    --brand-red-bright: #cb1507;
+    --brand-red-dark: #660707;
+    --brand-red-medium: #950f0a;
+    --brand-red-darker: #3b0506;
+    --brand-black: #040404;
+    --brand-gray-dark: #0c0c0c;
+    --brand-gray-medium: #242424;
+    --brand-gray-light: #1c1c1c;
+
+    --background: #0c0c0c;
+    --foreground: #ffffff;
+    --card: #1c1c1c;
+    --card-foreground: #ffffff;
+    --popover: #1c1c1c;
+    --popover-foreground: #ffffff;
+    --primary: #cb1507;
+    --primary-foreground: #ffffff;
+    --secondary: #242424;
+    --secondary-foreground: #ffffff;
+    --muted: #242424;
+    --muted-foreground: #a3a3a3;
+    --accent: #950f0a;
+    --accent-foreground: #ffffff;
+    --destructive: #cb1507;
+    --destructive-foreground: #ffffff;
+    --border: #242424;
+    --input: #1c1c1c;
+    --ring: #cb1507;
+    --radius: 0.5rem;
+}
+
+
+
+
+body{font-family:Arial,Helvetica,sans-serif;background: var(--brand-black)}
+.container{max-width:420px;margin:80px auto;padding:20px;background:#fff;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,.06)}
+label{display:block;margin-bottom:10px}
+input{width:100%;padding:8px;margin-top:4px;border:1px solid #ddd;border-radius:4px}
+button{padding:10px 16px;border:0;background:#1976d2;color:#fff;border-radius:6px;cursor:pointer}

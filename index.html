@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Página principal</title>
+<link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+
+<header>
+    <h1>Bienvenido al Sistema de Reportes</h1>
+    <nav>
+        <button onclick="loadView('dashboard')">Inicio</button>
+        <button onclick="loadView('usuarios')">Usuarios</button>
+        <button onclick="loadView('reportes')">Reportes</button>
+        <button id="logoutBtn">Cerrar sesión</button>
+    </nav>
+</header>
+
+<!-- Mantén el main vacío, el contenido se cargará dinámicamente -->
+<main id="main-content"></main>
+
+<!-- Script principal -->
+<script type="module" src="/src/js/main.js"></script>
+</body>
+</html>

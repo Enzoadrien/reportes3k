@@ -1,0 +1,49 @@
+<section>
+<h2>Gestión de Usuarios</h2>
+
+<!-- 🧾 Formulario para crear usuario -->
+<form id="userForm">
+    <label>Nombre</label>
+    <input type="text" id="nombre" required />
+
+    <label>Correo</label>
+    <input type="email" id="correo" required />
+
+    <label>Contraseña</label>
+    <input type="password" id="contrasena" required />
+
+    <label>Empresa</label>
+    <select id="empresaSelect">
+    <option value="68f69b76647d8d873aadf088">68f69b76647d8d873aadf088</option>
+    </select>
+
+    <label>Tipo de usuario</label>
+    <select id="tipo_usuario">
+    <option value="admin">Administrador</option>
+    <option value="empleado">Empleado</option>
+    <option value="tecnico">Técnico</option>
+    <option value="gerencia">Gerencia</option>
+    </select>
+
+    <button type="submit">Crear Usuario</button>
+</form>
+
+<hr>
+
+<!-- 📋 Tabla de usuarios -->
+<h3>Usuarios registrados</h3>
+<table id="usersTable">
+    <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Empresa</th>
+        <th>Tipo</th>
+        <th>Activo</th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+</section>
+
+<script src="/js/usuarios.js"></script>

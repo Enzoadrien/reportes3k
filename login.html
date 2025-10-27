@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Iniciar Sesión</title>
+<link rel="stylesheet" href="/css/globals.css">
+</head>
+<body>
+<main>
+    <section>
+    <form id="loginForm">
+        <div>
+        <img></img>
+        <h2>IniciarSeccion</h2>
+        <h6>Ingresa tu credenciales para acceder</h6>
+        </div>
+        <div>
+        <label for="correo">Correo Electronico</label>
+        <input type="email" id="correo" required>
+
+        <label for="contrasena">Contraseña</label>
+        <input type="password" id="contrasena" required>
+        <h6>
+            <a href="/views/forgot-password.html" id="forgot-link">¿Olvidaste tu contraseña?</a>
+        </h6>
+
+        <button type="submit">Ingresar</button>
+        </div>
+        <div>
+        <p id="msg"></p>
+        </div>
+    </form>
+    </section>
+</main>
+
+<script type="module" src="/src/js/auth.js"></script>
+</body>
+</html>
