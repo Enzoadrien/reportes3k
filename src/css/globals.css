@@ -1,3 +1,26 @@
+@font-face {
+  font-family: "Geist";
+  src: url("/src/assets/fonts/Geist/webfonts/Geist-RegularItalic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist";
+  src: url("/src/assets/fonts/Geist/webfonts/Geist-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist";
+  src: url("/src/assets/fonts/Geist/webfonts/Geist-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 :root {
     --brand-red-bright: #cb1507;
     --brand-red-dark: #660707;
@@ -28,13 +51,34 @@
     --input: #1c1c1c;
     --ring: #cb1507;
     --radius: 0.5rem;
+
+    --font-sans: "Geist", Arial, Helvetica, sans-serif;
+}
+
+body{
+    font-family: var(--font-sans);
+    background: var(--background);
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    color: var(--foreground);
+}
+
+h2{
+    font-size: 1.875rem;
+    font-weight: 700;
 }
 
 
-
-
-body{font-family:Arial,Helvetica,sans-serif;background: var(--brand-black)}
-.container{max-width:420px;margin:80px auto;padding:20px;background:#fff;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,.06)}
-label{display:block;margin-bottom:10px}
-input{width:100%;padding:8px;margin-top:4px;border:1px solid #ddd;border-radius:4px}
-button{padding:10px 16px;border:0;background:#1976d2;color:#fff;border-radius:6px;cursor:pointer}
+.input-100{
+    background-color: var(--muted);
+    width: 100%;
+    border: 1px solid var(--brand-red-darker);
+    outline: none;
+    transition: border-color 0.3s;
+    border-radius: calc(var(--radius) - 2px);
+    font-size: 1rem;
+    padding: 1em;
+    color: var(--card-foreground);
+    box-sizing: border-box;
+}

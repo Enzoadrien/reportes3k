@@ -3,33 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <title>Iniciar Sesión</title>
-<link rel="stylesheet" href="/css/globals.css">
+<link rel="stylesheet" href="/src/css/globals.css">
+<link rel="stylesheet" href="/src/css/views/login.css">
 </head>
 <body>
-<main>
-    <section>
-    <form id="loginForm">
-        <div>
-        <img></img>
-        <h2>IniciarSeccion</h2>
-        <h6>Ingresa tu credenciales para acceder</h6>
-        </div>
-        <div>
-        <label for="correo">Correo Electronico</label>
-        <input type="email" id="correo" required>
+<main class="login">
+    <section class="card-login">
+        <form id="loginForm">
+            <div>
+            <img></img>
+            <h2>IniciarSeccion</h2>
+            <h6>Ingresa tu credenciales para acceder</h6>
+            </div>
+            <div>
+            <label for="correo">Correo Electronico</label>
+            <input type="email" id="correo" class="input-100" required >
 
-        <label for="contrasena">Contraseña</label>
-        <input type="password" id="contrasena" required>
-        <h6>
-            <a href="/views/forgot-password.html" id="forgot-link">¿Olvidaste tu contraseña?</a>
-        </h6>
+            <label for="contrasena">Contraseña</label>
+            <input type="password" id="contrasena" class="input-100" required>
+            <h6>
+                <a href="/src/views/forgot-password.html" id="forgot-link">¿Olvidaste tu contraseña?</a>
+            </h6>
 
-        <button type="submit">Ingresar</button>
-        </div>
-        <div>
-        <p id="msg"></p>
-        </div>
-    </form>
+            <button type="submit">Ingresar</button>
+            </div>
+            <div>
+            <p id="msg"></p>
+            </div>
+        </form>
     </section>
 </main>
 

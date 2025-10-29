@@ -1,77 +1,122 @@
-// 🌐 Verifica si el usuario está autenticado y carga la vista inicial
+// ✅ Evita que el script se ejecute más de una vez
+if (window.__MAIN_LOADED__) {
+  console.log("⚠️ main.js ya estaba cargado, se evita duplicar ejecución.");
+} else {
+  window.__MAIN_LOADED__ = true;
+  console.log("✅ main.js cargado una sola vez");
 
-(async () => {
-  try {
-    const res = await fetch("/api/auth/verify", { credentials: "include" });
-    if (!res.ok) {
+  /**
+   * 🌈 Función para cargar vistas dinámicamente dentro del <main>
+   * Solo carga desde /src/views/ (no accesibles directamente por URL)
+   */
+  window.loadView = async function (viewName) {
+    const main = document.getElementById("main-content");
+    if (!main) return console.error("❌ No se encontró el contenedor <main>");
+
+    main.innerHTML = "<p>Cargando...</p>";
+
+    try {
+      // 👇 Carga las vistas desde src/views, no desde /views/
+      const res = await fetch(`/src/views/${viewName}.html`, { cache: "no-store" });
+      if (!res.ok) throw new Error(`Vista "${viewName}" no encontrada`);
+
+      const html = await res.text();
+      main.innerHTML = html;
+
+      // 🔹 Ejecutar scripts (inline o externos) incluidos en la vista
+      const tempDiv = document.createElement("div");
+      tempDiv.innerHTML = html;
+      const scripts = Array.from(tempDiv.querySelectorAll("script"));
+
+      for (const oldScript of scripts) {
+        const newScript = document.createElement("script");
+        if (oldScript.src) {
+          // Cargar script externo
+          await new Promise((resolve) => {
+            newScript.src = oldScript.src;
+            if (oldScript.type) newScript.type = oldScript.type;
+            newScript.onload = resolve;
+            newScript.onerror = () => {
+              console.error("⚠️ Error al cargar script:", oldScript.src);
+              resolve();
+            };
+            document.body.appendChild(newScript);
+          });
+        } else {
+          // Ejecutar script inline
+          if (oldScript.type) newScript.type = oldScript.type;
+          newScript.textContent = oldScript.textContent;
+          document.body.appendChild(newScript);
+        }
+      }
+
+      console.log(`✅ Vista "${viewName}" cargada correctamente`);
+    } catch (err) {
+      console.error(`❌ Error al cargar vista "${viewName}":`, err);
+      main.innerHTML = "<p>Error al cargar la vista.</p>";
+    }
+  };
+
+  /**
+   * 🔐 Inicialización principal
+   * - Verifica sesión
+   * - Carga la vista inicial (dashboard)
+   * - Configura navegación
+   * - Activa logout
+   */
+  (async () => {
+    try {
+      const res = await fetch("/api/auth/verify", { credentials: "include" });
+      if (!res.ok) {
+        console.warn("No autenticado → redirigiendo a login...");
+        window.location.href = "/login.html";
+        return;
+      }
+
+      console.log("🔓 Usuario autenticado");
+
+      // ✅ Cargar la vista inicial (dashboard)
+      await loadView("dashboard");
+
+      // 🧭 Configurar navegación del header
+      const nav = document.querySelector("nav");
+      if (nav) {
+        nav.addEventListener("click", (e) => {
+          if (e.target.tagName !== "BUTTON") return;
+          const view = e.target.textContent.trim().toLowerCase();
+          switch (view) {
+            case "inicio":
+              loadView("dashboard");
+              break;
+            case "usuarios":
+              loadView("usuarios");
+              break;
+            case "reportes":
+              loadView("reportes");
+              break;
+          }
+        });
+      }
+
+      // 🔚 Botón de logout
+      const logoutBtn = document.getElementById("logoutBtn");
+      if (logoutBtn) {
+        logoutBtn.addEventListener("click", async () => {
+          try {
+            await fetch("/api/auth/logout", {
+              method: "POST",
+              credentials: "include",
+            });
+          } catch (err) {
+            console.error("Error al cerrar sesión:", err);
+          } finally {
+            window.location.href = "/login.html";
+          }
+        });
+      }
+    } catch (err) {
+      console.error("Error al verificar autenticación:", err);
       window.location.href = "/login.html";
-      return;
     }
-
-    // ✅ Carga la vista inicial (dashboard)
-    await loadView("dashboard");
-  } catch (err) {
-    console.error("Error de autenticación:", err);
-    window.location.href = "/login.html";
-  }
-})();
-
-/**
- * Carga una vista HTML en el <main> y su script asociado.
- */
-async function loadView(viewName) {
-  const main = document.getElementById("main-content");
-  try {
-    // ✅ Quita "src" del path
-    const res = await fetch(`/views/${viewName}.html`, { cache: "no-store" });
-    if (!res.ok) throw new Error(`No se pudo cargar la vista: ${viewName}`);
-
-    main.innerHTML = await res.text();
-    await loadViewScript(viewName);
-
-    console.log(`✅ Vista cargada: ${viewName}`);
-  } catch (err) {
-    console.error("❌ Error cargando vista:", err);
-    main.innerHTML = `<p>Error cargando vista: ${viewName}</p>`;
-  }
+  })();
 }
-
-/**
- * Carga el script JS asociado a la vista (si existe).
- */
-async function loadViewScript(viewName) {
-  const oldScript = document.getElementById("dynamic-script");
-  if (oldScript) oldScript.remove();
-
-  // ✅ Quita "src" también aquí
-  const scriptPath = `/js/${viewName}.js`;
-
-  try {
-    const check = await fetch(scriptPath, { method: "HEAD" });
-    if (!check.ok) {
-      console.warn(`⚠️ No hay script asociado para la vista "${viewName}"`);
-      return;
-    }
-
-    const script = document.createElement("script");
-    script.src = scriptPath;
-    script.id = "dynamic-script";
-    script.defer = true;
-    document.body.appendChild(script);
-  } catch (err) {
-    console.warn(`⚠️ No se pudo cargar el script: ${scriptPath}`);
-  }
-}
-
-/**
- * Cerrar sesión
- */
-document.getElementById("logoutBtn").addEventListener("click", async () => {
-  try {
-    await fetch("/api/auth/logout", { method: "POST", credentials: "include" });
-    window.location.href = "/login.html";
-  } catch (err) {
-    alert("⚠️ Error al cerrar sesión");
-    console.error("Logout error:", err);
-  }
-});
