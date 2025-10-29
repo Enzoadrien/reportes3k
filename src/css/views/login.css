@@ -1,3 +1,5 @@
+@import url("/src/css/globals.css");
+
 .login{
     background-color: antiquewhite;
     width: 100%;
@@ -9,15 +11,20 @@
 }
 
 .card-login{
-    background-color: var(--card);
-    box-sizing: border-box;
-    min-width: 25rem;
-    max-width: 29rem;
-    padding: 2.5em;
+width: 100%;
+margin: 1.5em;
+padding: 1.5em;
 }
 
 .loginForm{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/*************** Circle **************/
+.circle-login{
+    width: 2.8em;
+    background: var(--gradient-primary-color);
+    margin: 0;
 }
