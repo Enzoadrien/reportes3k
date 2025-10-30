@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Iniciar Sesión</title>
+<!-- Remix Icon-->
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+
 <link rel="stylesheet" href="/src/css/globals.css">
 <link rel="stylesheet" href="/src/css/views/login.css">
 </head>
@@ -11,23 +14,29 @@
     <section class="card card-login">
         <form id="loginForm">
             <div class="div-center">
-                <div class="circle circle-login">
-                    <img src="/src/assets/icon/logo-icono.ico" alt="Icono 3k" class="img-circle"></img>
+                <div class="circle circle-login m-05em">
+                    <img src="/src/assets/icon/logo-icono.ico" alt="Icono 3k" class="img-circle "></img>
                 </div>
                 <h2 class="m-05em">Iniciar Sesion</h2>
-                <h5>Ingresa tu credenciales para acceder</h5>
+                <h5 class="m-h5-login">Ingresa tu credenciales para acceder</h5>
             </div>
             <div>
-            <label for="correo">Correo Electronico</label>
-            <input type="email" id="correo" class="input-100" required >
+                <label for="correo" class="font-6">Correo Electronico</label>
+                <div class="input-icon  m-05em mt-03">
+                    <i class="ri-mail-line font-5"></i>
+                    <input type="email" id="correo" class="input-100" required >
+                </div>
 
-            <label for="contrasena">Contraseña</label>
-            <input type="password" id="contrasena" class="input-100" required>
-            <h5>
-                <a href="/src/views/forgot-password.html" id="forgot-link">¿Olvidaste tu contraseña?</a>
-            </h5>
+                <label for="contrasena" class="font-6">Contraseña</label>
+                <div class="input-icon  m-05em mt-03">
+                    <i class="ri-lock-2-line font-5"></i>
+                    <input type="password" id="contrasena" class="input-100" required>
+                </div>
+                <h5 class="m-h5-login h5-df">
+                    <a href="/src/views/forgot-password.html" id="forgot-link" class="link-red">¿Olvidaste tu contraseña?</a>
+                </h5>
 
-            <button type="submit">Ingresar</button>
+                <button type="submit" class="button-primary size-100">Ingresar</button>
             </div>
             <div>
             <p id="msg"></p>

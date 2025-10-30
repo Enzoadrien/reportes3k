@@ -91,6 +91,13 @@ h5{
   color: var(--muted-foreground);
 }
 
+/*************** Fonts ****************/
+.font-5{
+  font-size: 1.4em;
+}
+.font-6{
+  font-size: 0.9rem;
+}
 /*************** Divs ****************/
 .div-center{
   display: flex;
@@ -99,9 +106,26 @@ h5{
   align-items: center;
 }
 
+/*************** Links ****************/
+.link-red{
+  color: var(--brand-red-bright);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.link-red:hover{
+  color: var(--accent);
+}
 /*************** paddings y margins ****************/
+.mt-03{
+  margin-top: 0.3em;
+}
 .m-05em{
-  margin: 0.5em;
+    margin-bottom: 1em;
+}
+
+.mb-03{
+  margin-bottom: 8em;
 }
 
 .card{
@@ -126,6 +150,22 @@ h5{
     box-sizing: border-box;
 }
 
+/************** Input icon *****************/
+.input-icon {
+  position: relative;
+}
+
+.input-icon i {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color:var(--muted-foreground);
+}
+
+.input-icon input {
+  padding-left: 40px;
+}
 /************** Circle ******************/ 
 .circle{
   display: flex;
@@ -138,4 +178,26 @@ h5{
   width: 100%;
   height: 100%;
   object-fit:contain; 
+}
+
+/************** Buttons ******************/ 
+
+.button-primary{
+  background: var(--gradient-primary-color);
+  box-sizing: border-box;
+  font-size: 1.3em;
+  padding: 0.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--card-foreground);
+  outline-style: none;
+  border-radius: calc(var(--radius) - 2px);
+  height: calc(var(--spacing) * 12);
+  border: none;
+}
+
+/************** Medidas ******************/ 
+.size-100{
+  width: 100%;
 }
