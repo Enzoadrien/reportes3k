@@ -10,7 +10,7 @@
 }
 
 .card-login{
-width: 100%;
+width: 28em;
 margin: 1.5em;
 padding: 1.5em;
 }
@@ -34,4 +34,36 @@ padding: 1.5em;
 /*************** direction **************/
 .h5-df{
     text-align: right;
+}
+
+
+/*************** button **************/
+.button-primary .spinner {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    width: 1em;
+    height: 1em;
+    animation: spin 1s linear infinite;
+    margin-left: 0.5em;
+    display: none; /* oculto por defecto */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Estado loading */
+.button-primary.loading {
+  pointer-events: none; /* evita clics mientras carga */
+}
+
+.button-primary.loading .spinner {
+  display: inline-block; /* muestra spinner al cargar */
+}
+
+.button-primary.loading .btn-text {
+  /* opcional: cambiar texto visual */
+  /* se puede hacer: content: "Ingresando..."; en JS */
 }
