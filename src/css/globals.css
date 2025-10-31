@@ -58,8 +58,9 @@
     --border: #242424;
     --input: #1c1c1c;
     --ring: #cb1507;
+    --brand-red-dark-opaciti: rgba(102, 7, 7, 0.2);
+    --brand-red-bright-opaciti: rgba(203, 21, 7, 0.5);
     --radius: 0.5rem;
-
     --gradient-primary-color: linear-gradient(90deg, var(--brand-red-bright), var(--brand-red-medium));
     --font-sans: "Geist", Arial, Helvetica, sans-serif;
 }
@@ -102,6 +103,13 @@ h5{
 .div-center{
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.div-center-row{
+  display: flex;
+  gap: 0.5em;
   justify-content: center;
   align-items: center;
 }
@@ -248,4 +256,21 @@ h5{
 /************** Medidas ******************/ 
 .size-100{
   width: 100%;
+}
+
+/************** Mensajes ******************/ 
+
+.ms-error{
+  display: none;
+  background-color: var(--brand-red-dark-opaciti);
+  border: 1px, solid, var(--brand-red-bright-opaciti);
+  border-radius: calc(var(--radius) - 2px);
+  color: var(--brand-red-bright);
+  padding: 0.1em;
+}
+
+/************** Mensajes ******************/ 
+
+.p-error{
+font-size: 0.9rem;
 }

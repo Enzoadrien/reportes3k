@@ -2,12 +2,18 @@ const loginForm = document.getElementById("loginForm");
 const loginButton = loginForm.querySelector(".button-primary");
 const btnText = loginButton.querySelector(".btn-text");
 const spinner = loginButton.querySelector(".spinner");
+// 🔹 Elementos del mensaje de error
+const errorBox = document.querySelector(".ms-error"); 
+const errorText = errorBox.querySelector(".p-error"); 
 
 loginForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const correo = document.getElementById("correo").value.trim();
   const contrasena = document.getElementById("contrasena").value.trim();
+
+  // Ocultar error previo
+  errorBox.style.display = "none";
 
   // Activar animación del botón
   loginButton.classList.add("loading");
@@ -25,14 +31,16 @@ loginForm.addEventListener("submit", async (e) => {
     const data = await res.json();
 
     if (res.ok && data.ok) {
-      console.log("✅ Login exitoso, redirigiendo...");
-      window.location.href = "/index.html"; // redirige a tu frontend
+      console.log("Login exitoso, redirigiendo...");
+      window.location.href = "/index.html";
     } else {
-      alert(data.message || "❌ Credenciales inválidas");
+      errorText.textContent = data.message || "Credenciales inválidas, intenta de nuevo.";
+      errorBox.style.display = "flex"; // mostrar el div
     }
   } catch (err) {
     console.error("Error en login:", err);
-    alert("⚠️ Error de conexión con el servidor");
+    errorText.textContent = "Error de conexión con el servidor";
+    errorBox.style.display = "flex";
   } finally {
     // Restaurar el botón aunque haya error o éxito
     loginButton.classList.remove("loading");
