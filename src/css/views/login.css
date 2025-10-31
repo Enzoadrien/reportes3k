@@ -23,7 +23,7 @@ padding: 1.5em;
 
 /*************** Circle **************/
 .circle-login{
-    width: 2.8em;
+    width: 4em;
     background: var(--gradient-primary-color);
 }
 /*************** padding / margin **************/
@@ -63,7 +63,15 @@ padding: 1.5em;
   display: inline-block; /* muestra spinner al cargar */
 }
 
-.button-primary.loading .btn-text {
-  /* opcional: cambiar texto visual */
-  /* se puede hacer: content: "Ingresando..."; en JS */
+
+.button-link{
+    color: var(--muted-foreground);
+    gap: 1em;
+    padding: 1em;
+    font-size: 1rem;
+}
+
+.button-link:hover{
+    background-color: var(--muted);
+    color: var(--card-foreground);
 }

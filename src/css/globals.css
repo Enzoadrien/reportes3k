@@ -107,6 +107,11 @@ h5{
 }
 
 /*************** Links ****************/
+.link{
+   text-decoration: none;
+    cursor: pointer;
+}
+
 .link-red{
   color: var(--brand-red-bright);
   text-decoration: none;
@@ -119,6 +124,9 @@ h5{
 /*************** paddings y margins ****************/
 .mt-03{
   margin-top: 0.3em;
+}
+.mt-0-5{
+  margin-top: 0.5em;
 }
 .m-05em{
     margin-bottom: 1em;
@@ -137,6 +145,16 @@ h5{
 }
 
 /************** Inputs *****************/
+.input{
+    width: 100%;
+    outline: none;
+    transition: border-color 0.3s;
+    border-radius: calc(var(--radius) - 2px);
+    font-size: 1rem;
+    padding: 1em;
+    box-sizing: border-box;
+}
+
 .input-100{
     background-color: var(--muted);
     width: 100%;
@@ -178,7 +196,7 @@ h5{
   justify-content: center;
   align-items: center;
   border-radius: calc(infinity * 1px);
-  padding: 0.5em;
+  padding: 0.3em;
 }
 .img-circle{
   width: 100%;
@@ -187,6 +205,20 @@ h5{
 }
 
 /************** Buttons ******************/ 
+.button{
+  box-sizing: border-box;
+  font-weight: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline-style: none;
+  border-radius: calc(var(--radius) - 2px);
+  height: calc(var(--spacing) * 12);
+  border: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
 
 .button-primary{
   background: var(--gradient-primary-color);
