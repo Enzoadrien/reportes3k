@@ -12,21 +12,26 @@ if (window.__MAIN_LOADED__) {
   window.loadView = async function (viewName) {
     const main = document.getElementById("main-content");
     if (!main) return console.error("❌ No se encontró el contenedor <main>");
+
     main.innerHTML = "<p>Cargando...</p>";
 
     try {
+      // 👇 Carga las vistas desde src/views, no desde /views/
       const res = await fetch(`/src/views/${viewName}.html`, { cache: "no-store" });
       if (!res.ok) throw new Error(`Vista "${viewName}" no encontrada`);
+
       const html = await res.text();
       main.innerHTML = html;
 
-      // 🔹 Ejecutar scripts incluidos en la vista
+      // 🔹 Ejecutar scripts (inline o externos) incluidos en la vista
       const tempDiv = document.createElement("div");
       tempDiv.innerHTML = html;
       const scripts = Array.from(tempDiv.querySelectorAll("script"));
+
       for (const oldScript of scripts) {
         const newScript = document.createElement("script");
         if (oldScript.src) {
+          // Cargar script externo
           await new Promise((resolve) => {
             newScript.src = oldScript.src;
             if (oldScript.type) newScript.type = oldScript.type;
@@ -38,6 +43,7 @@ if (window.__MAIN_LOADED__) {
             document.body.appendChild(newScript);
           });
         } else {
+          // Ejecutar script inline
           if (oldScript.type) newScript.type = oldScript.type;
           newScript.textContent = oldScript.textContent;
           document.body.appendChild(newScript);
@@ -53,12 +59,12 @@ if (window.__MAIN_LOADED__) {
 
   /**
    * 🔐 Inicialización principal
+   * - Verifica sesión
+   * - Carga la vista inicial (dashboard)
+   * - Configura navegación
+   * - Activa logout
    */
   (async () => {
-    // 🚫 Páginas públicas que NO requieren verificación
-    const publicPages = ["/login.html", "/reset.html"];
-    if (publicPages.includes(window.location.pathname)) return;
-
     try {
       const res = await fetch("/api/auth/verify", { credentials: "include" });
       if (!res.ok) {
@@ -66,6 +72,7 @@ if (window.__MAIN_LOADED__) {
         window.location.href = "/login.html";
         return;
       }
+
       console.log("🔓 Usuario autenticado");
 
       // ✅ Cargar la vista inicial (dashboard)
