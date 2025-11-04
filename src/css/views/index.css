@@ -1,0 +1,21 @@
+.header-index{
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    background-color: var(--brand-gray-light)
+}
+.hidden {
+  display: none;
+}
+
+nav {
+  display: flex;
+  flex-direction: column; 
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.menu-container a {
+  cursor: pointer;
+  font-size: 24px;
+}

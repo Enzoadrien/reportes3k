@@ -4,17 +4,47 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Página principal</title>
-  <link rel="stylesheet" href="/css/styles.css" />
+ 
+<!-- Remix Icon-->
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/src/css/globals.css">
+<link rel="stylesheet" href="/src/css/views/index.css">
 </head>
 <body>
-  <header>
-    <h1>Bienvenido al Sistema de Reportes</h1>
-    <nav>
+  <header class="header-index">
+    <div class="menu-container">
+      <a href="#" id="menuToggle" class="link link-grey">
+        <i class="ri-menu-line"></i>
+      </a>
+    </div>
+    <nav id="mainNav" class="hidden">
       <button>Inicio</button>
       <button>Usuarios</button>
       <button>Reportes</button>
       <button id="logoutBtn">Cerrar sesión</button>
     </nav>
+    <div>
+      <i class="ri-search-line"></i>
+      <input type="text">
+    </div>
+    <div>
+      <div>
+        <p>3</p>
+      </div>
+      <a>
+        <i class="ri-notification-line"></i>
+      </a>
+    </div>
+    <div>
+      <div>
+        <p>Admin Usuario</p>
+        <p>admin@reportes.com</p>
+      </div>
+      <div>
+        <p>AU</p>
+      </div>
+    </div>
   </header>
 
   <main id="main-content"></main>

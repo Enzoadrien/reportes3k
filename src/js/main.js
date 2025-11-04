@@ -1,29 +1,29 @@
 // ✅ Evita que el script se ejecute más de una vez
 if (window.__MAIN_LOADED__) {
-  console.log("⚠️ main.js ya estaba cargado, se evita duplicar ejecución.");
+  console.log("main.js ya estaba cargado, se evita duplicar ejecución.");
 } else {
   window.__MAIN_LOADED__ = true;
-  console.log("✅ main.js cargado una sola vez");
+  console.log("main.js cargado una sola vez");
 
   /**
-   * 🌈 Función para cargar vistas dinámicamente dentro del <main>
+   *Función para cargar vistas dinámicamente dentro del <main>
    * Solo carga desde /src/views/ (no accesibles directamente por URL)
    */
   window.loadView = async function (viewName) {
     const main = document.getElementById("main-content");
-    if (!main) return console.error("❌ No se encontró el contenedor <main>");
+    if (!main) return console.error("No se encontró el contenedor <main>");
 
     main.innerHTML = "<p>Cargando...</p>";
 
     try {
-      // 👇 Carga las vistas desde src/views, no desde /views/
+      // Carga las vistas desde src/views, no desde /views/
       const res = await fetch(`/src/views/${viewName}.html`, { cache: "no-store" });
       if (!res.ok) throw new Error(`Vista "${viewName}" no encontrada`);
 
       const html = await res.text();
       main.innerHTML = html;
 
-      // 🔹 Ejecutar scripts (inline o externos) incluidos en la vista
+      // Ejecutar scripts (inline o externos) incluidos en la vista
       const tempDiv = document.createElement("div");
       tempDiv.innerHTML = html;
       const scripts = Array.from(tempDiv.querySelectorAll("script"));
@@ -37,7 +37,7 @@ if (window.__MAIN_LOADED__) {
             if (oldScript.type) newScript.type = oldScript.type;
             newScript.onload = resolve;
             newScript.onerror = () => {
-              console.error("⚠️ Error al cargar script:", oldScript.src);
+              console.error("Error al cargar script:", oldScript.src);
               resolve();
             };
             document.body.appendChild(newScript);
@@ -50,15 +50,15 @@ if (window.__MAIN_LOADED__) {
         }
       }
 
-      console.log(`✅ Vista "${viewName}" cargada correctamente`);
+      console.log(`Vista "${viewName}" cargada correctamente`);
     } catch (err) {
-      console.error(`❌ Error al cargar vista "${viewName}":`, err);
+      console.error(`Error al cargar vista "${viewName}":`, err);
       main.innerHTML = "<p>Error al cargar la vista.</p>";
     }
   };
 
   /**
-   * 🔐 Inicialización principal
+   *  Inicialización principal
    * - Verifica sesión
    * - Carga la vista inicial (dashboard)
    * - Configura navegación
@@ -75,10 +75,10 @@ if (window.__MAIN_LOADED__) {
 
       console.log("🔓 Usuario autenticado");
 
-      // ✅ Cargar la vista inicial (dashboard)
+      // Cargar la vista inicial (dashboard)
       await loadView("dashboard");
 
-      // 🧭 Configurar navegación del header
+      // Configurar navegación del header
       const nav = document.querySelector("nav");
       if (nav) {
         nav.addEventListener("click", (e) => {
@@ -98,7 +98,7 @@ if (window.__MAIN_LOADED__) {
         });
       }
 
-      // 🔚 Botón de logout
+      // Botón de logout
       const logoutBtn = document.getElementById("logoutBtn");
       if (logoutBtn) {
         logoutBtn.addEventListener("click", async () => {
@@ -114,6 +114,17 @@ if (window.__MAIN_LOADED__) {
           }
         });
       }
+
+      const menuRoggle = document.getElementById(menuToggle);
+      const mainNav = document.querySelector("nav");
+
+      if (menuToggle && mainNav) {
+        menuToggle.addEventListener("click", (e) => {
+          e.preventDefault(); 
+          mainNav.classList.toggle("hidden"); 
+        });
+      }
+
     } catch (err) {
       console.error("Error al verificar autenticación:", err);
       window.location.href = "/login.html";

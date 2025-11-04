@@ -92,6 +92,9 @@ h5{
   color: var(--muted-foreground);
 }
 
+
+/*************** COLORS ****************/
+
 /*************** Fonts ****************/
 .font-5{
   font-size: 1.4em;
@@ -122,12 +125,16 @@ h5{
 
 .link-red{
   color: var(--brand-red-bright);
-  text-decoration: none;
-  cursor: pointer;
 }
 
 .link-red:hover{
   color: var(--accent);
+}
+.link-grey{
+   color: var(--muted-foreground);
+}
+.link-grey:hover{
+   color: var(--card-foreground);
 }
 /*************** paddings y margins ****************/
 .mt-03{
