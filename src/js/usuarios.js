@@ -4,9 +4,9 @@ const form = document.getElementById("userForm");
 const tableBody = document.querySelector("#usersTable tbody");
 
 if (!form) {
-console.error("❌ No se encontró el formulario userForm");
+console.error("No se encontró el formulario userForm");
 } else {
-console.log("🧩 Formulario detectado, agregando listener...");
+console.log("Formulario detectado, agregando listener...");
 
 // 🔹 Cargar usuarios al iniciar
 loadUsers();
@@ -38,15 +38,15 @@ form.addEventListener("submit", async (e) => {
     const data = await res.json();
 
     if (res.ok && data.ok) {
-        alert("✅ Usuario creado correctamente");
+        alert("Usuario creado correctamente");
         form.reset();
         loadUsers();
     } else {
-        alert(`❌ ${data.message || "Error al crear usuario"}`);
+        alert(`${data.message || "Error al crear usuario"}`);
     }
     } catch (err) {
     console.error("Error al crear usuario:", err);
-    alert("⚠️ Error de conexión con el servidor");
+    alert("Error de conexión con el servidor");
     }
 });
 }
@@ -65,7 +65,7 @@ try {
     const data = await res.json();
 
     if (!res.ok || !data.ok) {
-    tableBody.innerHTML = "<tr><td colspan='5'>❌ No autorizado o error al obtener usuarios</td></tr>";
+    tableBody.innerHTML = "<tr><td colspan='5'> No autorizado o error al obtener usuarios</td></tr>";
     return;
     }
 
@@ -88,6 +88,6 @@ try {
     });
 } catch (err) {
     console.error("Error al cargar usuarios:", err);
-    tableBody.innerHTML = "<tr><td colspan='5'>⚠️ Error de conexión</td></tr>";
+    tableBody.innerHTML = "<tr><td colspan='5'> Error de conexión</td></tr>";
 }
 }
