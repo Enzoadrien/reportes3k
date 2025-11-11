@@ -95,6 +95,11 @@ h5{
 
 /*************** COLORS ****************/
 
+/*************** FLEX / GRID ****************/
+div.flex{
+  display: flex;
+}
+
 /*************** Fonts ****************/
 .font-5{
   font-size: 1.4em;
@@ -161,26 +166,26 @@ h5{
 
 /************** Inputs *****************/
 .input{
-    width: 100%;
     outline: none;
     transition: border-color 0.3s;
     border-radius: calc(var(--radius) - 2px);
-    font-size: 1rem;
-    padding: 1em;
     box-sizing: border-box;
+    transition: border-color 0.3s;
 }
-
-.input-100{
-    background-color: var(--muted);
-    width: 100%;
-    border: 1px solid var(--brand-red-darker);
-    outline: none;
-    transition: border-color 0.3s;
-    border-radius: calc(var(--radius) - 2px);
-    font-size: 1rem;
-    padding: 1em;
-    color: var(--card-foreground);
-    box-sizing: border-box;
+.form-input{
+  background-color: var(--muted);
+  width: 100%;
+  border: 1px solid var(--brand-red-darker);
+  font-size: 1rem;
+  padding: 1em;
+  color: var(--card-foreground);
+}
+.search-input{
+  width: 100%;
+  background-color: var(--background);
+  color: var(--accent-foreground);
+  padding: 0.5em;
+  border: 1px solid var(--border);
 }
 
 /************** Input icon *****************/
