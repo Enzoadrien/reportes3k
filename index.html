@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Página principal</title>
- 
 <!-- Remix Icon-->
 <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
 
@@ -13,40 +12,53 @@
 </head>
 <body>
   <header class="header-index">
-    <div class="">
       <div class="menu-container">
         <a href="#" id="menuToggle" class="link link-grey">
           <i class="ri-menu-line"></i>
         </a>
       </div>
-      <nav id="mainNav" class="hidden">
-        <button>Inicio</button>
-        <button>Usuarios</button>
-        <button>Reportes</button>
-        <button id="logoutBtn">Cerrar sesión</button>
+      <nav id="mainNav" class="hidden nav">
+        <div class="div-flex-justify div-header-logo">
+          <div class="div-logo-index">
+            <img class="img-circle" src="/src/assets/imgs/logo-sin-fondo.png">
+          </div>
+          <div>
+            <h2>Reportes</h2>
+          </div>
+          <div>
+            <i class="ri-close-large-line font-5 link-grey"></i>
+          </div>
+        </div>
+        <div class="div-center">
+          <button class="button size-100">Inicio</button>
+          <button class="button">Usuarios</button>
+          <button class="button">Reportes</button>
+          <button id="logoutBtn">Cerrar sesión</button>
+        </div>
       </nav>
-      <div class="input-icon-red">
+      <div class="input-icon-red size-50">
           <i class="ri-search-line"></i>
           <input type="text" placeholder="Buscar..." class="input search-input">
       </div>
-    </div>
-    <div>
-      <div>
-        <p>3</p>
-      </div>
-      <a>
-        <i class="ri-notification-line"></i>
-      </a>
-    </div>
-    <div>
-      <div>
-        <p>Admin Usuario</p>
-        <p>admin@reportes.com</p>
+      <div class="div-notification">
+        <div class="div-center background-red notification-bubble">
+          <p class="font-6">3</p>
+        </div>
+        <div class="icon-notification">
+          <a class="link-grey link font-4">
+            <i class="ri-notification-line"></i>
+          </a>
+        </div>
       </div>
       <div>
-        <p>AU</p>
+        <div class="hidden">
+          <p>Admin Usuario</p>
+          <p>admin@reportes.com</p>
+        </div>
+        <div class="circle background-red size-notification">
+          <p>AU</p>
+        </div>
       </div>
-    </div>
   </header>
 
   <main id="main-content"></main>

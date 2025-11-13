@@ -91,16 +91,20 @@ h5{
   font-weight: 300;
   color: var(--muted-foreground);
 }
-
+/*************** HIDDEN ****************/
+.hidden{
+  display: none;
+}
 
 /*************** COLORS ****************/
-
-/*************** FLEX / GRID ****************/
-div.flex{
-  display: flex;
+.background-red{
+  background-color: var(--brand-red-bright);
 }
 
 /*************** Fonts ****************/
+.font-4{
+  font-size: 1.1em;
+}
 .font-5{
   font-size: 1.4em;
 }
@@ -122,9 +126,21 @@ div.flex{
   align-items: center;
 }
 
+.div-flex{
+  display: flex;
+  gap: 1em;
+}
+
+.div-flex-justify{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
 /*************** Links ****************/
 .link{
-   text-decoration: none;
+    text-decoration: none;
     cursor: pointer;
 }
 
@@ -149,7 +165,7 @@ div.flex{
   margin-top: 0.5em;
 }
 .m-05em{
-    margin-bottom: 1em;
+  margin-bottom: 1em;
 }
 
 .mb-03{
@@ -182,6 +198,7 @@ div.flex{
 }
 .search-input{
   width: 100%;
+  font-size: 1rem;
   background-color: var(--background);
   color: var(--accent-foreground);
   padding: 0.5em;
@@ -215,7 +232,7 @@ div.flex{
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: calc(infinity * 1px);
+  border-radius: 50%;
   padding: 0.3em;
 }
 .img-circle{
@@ -268,6 +285,9 @@ div.flex{
 /************** Medidas ******************/ 
 .size-100{
   width: 100%;
+}
+.size-50{
+  width: 50%;
 }
 
 /************** Mensajes ******************/ 
