@@ -73,7 +73,7 @@ body{
     margin: 0;
     color: var(--foreground);
 }
-
+/*************** H1,2,3,4,5,6 ****************/
 h1, h2, h3, h4, h5, h6{
   margin: 0;
   padding: 0;
@@ -89,7 +89,6 @@ h5{
   font-family: "Geist", Arial, Helvetica, sans-serif; 
   font-size: 0.9rem;
   font-weight: 300;
-  color: var(--muted-foreground);
 }
 /*************** HIDDEN ****************/
 .hidden{
@@ -101,7 +100,15 @@ h5{
   background-color: var(--brand-red-bright);
 }
 
-/*************** Fonts ****************/
+.background-gradient-red{
+  background: var(--gradient-primary-color);
+}
+
+.font-color-grey{
+color: var(--muted-foreground);
+}
+
+/*************** FONTS ****************/
 .font-4{
   font-size: 1.1em;
 }
@@ -111,34 +118,61 @@ h5{
 .font-6{
   font-size: 0.9rem;
 }
-/*************** Divs ****************/
-.div-center{
+/*************** FLEX / GRID ****************/
+.flex-column{
   display: flex;
   flex-direction: column;
+}
+
+.flex-row{
+  display: flex;
+}
+
+.grid{
+  display: grid;
+}
+
+/*************** ALINAMIENTO ****************/
+
+.center{
   justify-content: center;
   align-items: center;
 }
 
-.div-center-row{
-  display: flex;
+.space-between{
+  justify-content: space-between;
+}
+
+/*************** ESPACIOS ****************/
+
+.gap-05{
   gap: 0.5em;
-  justify-content: center;
-  align-items: center;
 }
 
-.div-flex{
-  display: flex;
+.gap-1{
   gap: 1em;
 }
 
-.div-flex-justify{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+/*************** PADDINGS Y MARGINS ****************/
+.mt-03{
+  margin-top: 0.3em;
+}
+.mt-0-5{
+  margin-top: 0.5em;
+}
+.m-05em{
+  margin-bottom: 1em;
 }
 
+/************** MEDIDAS ******************/ 
+.size-100{
+  width: 100%;
+}
+.size-50{
+  width: 50%;
+}
 
-/*************** Links ****************/
+/*************** LINKS ****************/
 .link{
     text-decoration: none;
     cursor: pointer;
@@ -151,33 +185,12 @@ h5{
 .link-red:hover{
   color: var(--accent);
 }
+
 .link-grey{
    color: var(--muted-foreground);
 }
 .link-grey:hover{
    color: var(--card-foreground);
-}
-/*************** paddings y margins ****************/
-.mt-03{
-  margin-top: 0.3em;
-}
-.mt-0-5{
-  margin-top: 0.5em;
-}
-.m-05em{
-  margin-bottom: 1em;
-}
-
-.mb-03{
-  margin-bottom: 8em;
-}
-
-.card{
-    background-color: var(--card);
-    box-sizing: border-box;
-    border: 1px solid var(--brand-gray-medium);
-    border-radius: calc(var(--radius) + 4px);
-    transition: 0.2s ease-in-out;
 }
 
 /************** Inputs *****************/
@@ -282,13 +295,7 @@ h5{
 }
 
 
-/************** Medidas ******************/ 
-.size-100{
-  width: 100%;
-}
-.size-50{
-  width: 50%;
-}
+
 
 /************** Mensajes ******************/ 
 

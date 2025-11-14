@@ -1,24 +1,14 @@
-@import url("/src/css/globals.css");
 
 .login{
     width: 100%;
     height: 100vh;
     box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .card-login{
-width: 28em;
-margin: 1.5em;
-padding: 1.5em;
-}
-
-.loginForm{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 28em;
+    margin: 1.5em;
+    padding: 1.5em;
 }
 
 /*************** Circle **************/

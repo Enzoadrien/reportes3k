@@ -1,0 +1,11 @@
+
+.card{
+    box-sizing: border-box;
+    border: 1px solid var(--brand-gray-medium);
+    border-radius: calc(var(--radius) + 4px);
+    transition: 0.2s ease-in-out;
+}
+
+.card-gray{
+    background-color: var(--card);
+}
